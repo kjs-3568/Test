@@ -16,7 +16,6 @@ public class Dialogue
 public class DialogueEvent
 { 
     public string eventName;
-
-    public Dialogue[] dialogues;
     public Vector2 line;
+    public Dialogue[] dialogues;
 }
