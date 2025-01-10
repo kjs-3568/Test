@@ -1,5 +1,6 @@
-ID,CharName,Dialogue
-1,Red,Hi' I'm Red.
-,,And next one is...
-2,Blue,I'm Blue!
-3,Red,Yes' It is.
+ID,CharName,Dialogue,Comment
+1,Red,Hi' I'm <color=red>Red</color>.,
+,,Very glade to me you.,
+,,And next one is...,
+2,Blue,I'm ¨ÎBlue¨ã!,
+3,Red,Yes' It is.,

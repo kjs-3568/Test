@@ -8,7 +8,7 @@ public class DataBaseManager : MonoBehaviour
 
     [SerializeField] string csv_FileName;  // 사용할 CSV 파일 이름
 
-    Dictionary<int, Dialogue> dialogueDic = new Dictionary<int, Dialogue>();  // 대사 데이터를 저장할 딕셔너리
+    Dictionary<int, Dialogue> dialogueDic = new Dictionary<int, Dialogue>();  // 대사 데이터를 저장할 딕셔너리. 각 대사를 int키값으로 관리가능
 
     public static bool isFinish = false;  // 대사 데이터 로딩이 완료되었는지 여부
 
@@ -22,7 +22,7 @@ public class DataBaseManager : MonoBehaviour
 
             for (int i = 0; i < dialogues.Length; i++)
             {
-                dialogueDic.Add(i + 1, dialogues[i]);  // 대사 목록을 딕셔너리에 추가
+                dialogueDic.Add(i + 1, dialogues[i]);  // 대사 목록을 딕셔너리에 추가(대사 첫번째가 인덱스 0번이면 직관적이지 않으니 그냥 1부터)
             }
 
             isFinish = true;  // 로딩 완료 표시
@@ -33,7 +33,7 @@ public class DataBaseManager : MonoBehaviour
     {
         List<Dialogue> dialogueList = new List<Dialogue>();
 
-        for(int i = 0; i <= _EndNum - _startNum; i++)
+        for(int i = 0; i <= _EndNum - _startNum; i++) // 3번에서 7번까지의 대사라면, 5번 반복한다
         {
             dialogueList.Add(dialogueDic[_startNum + i]);
         }

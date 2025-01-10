@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class InteractionController : MonoBehaviour
@@ -14,16 +15,28 @@ public class InteractionController : MonoBehaviour
     private bool isContact = false;
     private bool isInteract = false;
 
+    private DialogueManager theDM;
+
     private void Start()
     {
         rect = mousePoinerUI.GetComponent<RectTransform>();
         originalSize = rect.sizeDelta;
+        theDM = FindObjectOfType<DialogueManager>();
     }
 
     private void Update()
     {
-        CheckObject();
-        ClickLeftButton();
+        if (!isInteract)
+        {
+            CheckObject();
+            ClickLeftButton();
+        }
+    }
+
+    public void SettingMousePoinerUI(bool p_flag)
+    {
+        mousePoinerUI.SetActive(p_flag);
+        isInteract = !p_flag;
     }
 
     private void CheckObject()
@@ -82,5 +95,7 @@ public class InteractionController : MonoBehaviour
     {
         isInteract = true;
         // 상호작용가능오브젝트를 클릭했을때
+
+        theDM.ShowDialogue(hitInfo.transform.GetComponent<InteractionEvent>().GetDialogue()); // 부딪힌 객체가 갖고있는 InteractionEvent값을 가져온다
     }
 }
